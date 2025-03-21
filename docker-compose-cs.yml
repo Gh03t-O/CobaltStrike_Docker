@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  onecs:
+    build:
+      context: ./
+    container_name: cs
+    ports:
+      - "12564:12564"
+      - "2345:2345"
+      - "2346:2346"
+      - "2347:2347"
+      - "2348:2348"
+      - "2349:2349"
+      - "2350:2350"
+    stdin_open: true  
+    tty: true  
+    command: ["/bin/bash", "-c", "cd /opt/*your-folder-name* && ./teamserver $(hostname -I | awk '{print $1}') *you-passwd*"]
+    restart: always
+    networks:
+      - default
